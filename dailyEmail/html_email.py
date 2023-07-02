@@ -34,8 +34,6 @@ def construct_html_msg(table, style, quote):
     <body>
         <h1>Tareas del dia ✅</h1>
         {table}
-        <h1>Frase del dia 🧠</h1>
-        {quote}
     </body>
 </html>
 """
@@ -90,15 +88,3 @@ style = """\
             margin-bottom: 1px;
         }
 """
-
-
-def quote_html(author, quote):
-    quote_html = f"""\
-<div>
-    <blockquote>
-        <p>{quote}</p>
-        <cite>{author}</cite>
-    </blockquote>
-</div>
-"""
-    return quote_html

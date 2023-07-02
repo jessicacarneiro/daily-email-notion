@@ -77,8 +77,7 @@ author, stoic_quote = retrieveStoicQuote.random_stoic_quote()
 
 html_msg = html.construct_html_msg(
     table_html,
-    html.style,
-    html.quote_html(author, stoic_quote)  # Format stoic quote to html
+    html.style
 )
 
 # utils.save_html(html_msg)
