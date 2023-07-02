@@ -55,8 +55,9 @@ python -m pip install --upgrade pip
 
 Install dependencies via pip:
 ```sh
-pip install requests python-dateutil
+pip install -r requirements.txt
 ```
+
 ### Notion
 Follow the official Notion api getting started guide [here](https://developers.notion.com/docs) to learn how to set up notion integrations.
 
