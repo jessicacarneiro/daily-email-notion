@@ -1,29 +1,29 @@
-def html_table_column(lista_titulos):
+def html_table_column(titles):
     yield "\t    <tr>"
-    for columna in lista_titulos:
-        yield f"\t\t<th>{columna}</th>"
+    for column in titles:
+        yield f"\t\t<th>{column}</th>"
     yield "\t    </tr>\n"
 
 
-def html_table_row(lista_filas, lista_columns):
-    for fila in lista_filas:
+def html_table_row(rows, columns):
+    for row in rows:
         yield "\t    <tr>"
-        for columna in lista_columns:
-            if columna not in fila:
-                fila[columna] = ""
-            if columna in fila and columna == 'Task':
-                href = "href=\"" + fila['url'] + "\""
-                yield f"\t\t<td><a {href}>{fila[columna]}</a></td>"
+        for column in columns:
+            if column not in row:
+                row[column] = ""
+            if column in row and column == 'Task':
+                href = "href=\"" + row['url'] + "\""
+                yield f"\t\t<td><a {href}>{row[column]}</a></td>"
             else:
-                yield f"\t\t<td>{fila[columna]}</td>"
+                yield f"\t\t<td>{row[column]}</td>"
         yield "\t    </tr>"
 
 
-def construct_html_table(columnas, filas):
-    return '<table class="styled-table">\n' + columnas + filas + "\n\t</table>"
+def construct_html_table(columns, rows):
+    return '<table class="styled-table">\n' + columns + rows + "\n\t</table>"
 
 
-def construct_html_msg(table, style, quote):
+def construct_html_msg(table, style):
     html_template = f"""\
 <html>
     <head>
@@ -32,7 +32,7 @@ def construct_html_msg(table, style, quote):
     </style>
     </head>
     <body>
-        <h1>Tareas del dia ✅</h1>
+        <h1>Tasks for today ✅</h1>
         {table}
     </body>
 </html>

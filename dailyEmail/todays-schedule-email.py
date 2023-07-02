@@ -1,5 +1,5 @@
 
-from service import retrieveStoicQuote, retrieveNotionDatabase
+from service import retrieveNotionDatabase
 import utils
 from tokens import SECRETS
 from send_email import send_email
@@ -58,9 +58,6 @@ rows = "\n".join(html.html_table_row(
     dbProperties
 ))
 table_html = html.construct_html_table(title, rows)
-
-# Get random stoic quote
-author, stoic_quote = retrieveStoicQuote.random_stoic_quote()
 
 html_msg = html.construct_html_msg(
     table_html,
