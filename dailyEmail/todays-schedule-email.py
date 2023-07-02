@@ -13,23 +13,15 @@ headers = {
     "Notion-version": "2021-05-13"
 }
 
-tomorrow = (
-    datetime.datetime.now(timezone.utc) +
-    datetime.timedelta(days=1)
-).astimezone().isoformat()
+today = str(datetime.datetime.now(timezone.utc).date())
+
 query = {
     "filter": {
         "and": [
             {
-                "property": "Done",
-                "checkbox": {
-                    "equals": False
-                }
-            },
-            {
                 "property": "Due",
                 "date": {
-                    "before": tomorrow
+                    "equals": today
                 }
             }
         ]
@@ -38,10 +30,6 @@ query = {
         {
             "property": "Due",
             "direction": "ascending"
-        },
-        {
-            "property": "State",
-            "direction": "descending"
         }
     ]
 }
@@ -62,8 +50,7 @@ database_list = utils.decodeDatabase(database)
 dbProperties = utils.databaseProperties(database_list)
 
 # Filter columns of the database
-dbProperties = ['State', 'Task', 'Api-projects', 'Due',
-                'Kanban - State', 'Priority', 'Type']
+dbProperties = ['Task name', 'Due', 'Project', 'Context', 'Priority', 'Summary']
 # Data to html table
 title = "\n".join(html.html_table_column(dbProperties))
 rows = "\n".join(html.html_table_row(
