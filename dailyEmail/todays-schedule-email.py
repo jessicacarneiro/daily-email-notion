@@ -21,7 +21,7 @@ query = {
             {
                 "property": "Due",
                 "date": {
-                    "equals": today
+                    "on_or_before": today
                 }
             }
         ]
