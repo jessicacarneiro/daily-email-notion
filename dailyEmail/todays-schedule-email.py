@@ -23,7 +23,13 @@ query = {
                 "date": {
                     "on_or_before": today
                 }
-            }
+            },
+            {
+                "property": "Completed",
+                "checkbox": {
+                    "equals": False
+                }
+            },
         ]
     },
     "sorts": [
