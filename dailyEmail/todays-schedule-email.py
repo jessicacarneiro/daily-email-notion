@@ -10,7 +10,7 @@ from datetime import timezone
 password = f"Bearer {SECRETS['notion_test_token']}"
 headers = {
     "Authorization": password,
-    "Notion-version": "2021-05-13"
+    "Notion-version": "2022-06-28"
 }
 
 today = str(datetime.datetime.now(timezone.utc).date())
@@ -25,11 +25,11 @@ query = {
                 }
             },
             {
-                "property": "Completed",
-                "checkbox": {
-                    "equals": False
+                "property": "Status",
+                "status": {
+                    "equals": "to do"
                 }
-            },
+            }
         ]
     },
     "sorts": [
@@ -56,7 +56,7 @@ database_list = utils.decodeDatabase(database)
 dbProperties = utils.databaseProperties(database_list)
 
 # Filter columns of the database
-dbProperties = ['Task name', 'Due', 'Project', 'Context', 'Priority', 'Summary']
+dbProperties = ['Task name', 'Due', 'Status', 'Project', 'Context', 'Priority', 'Summary']
 # Data to html table
 title = "\n".join(html.html_table_column(dbProperties))
 rows = "\n".join(html.html_table_row(
