@@ -70,7 +70,7 @@ html_msg = html.construct_html_msg(
     html.style
 )
 
-utils.save_html(html_msg)
+# utils.save_html(html_msg)
 
 # Send email with html msg
 send_email(
